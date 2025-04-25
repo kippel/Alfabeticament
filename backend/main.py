@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from fastapi.middleware.cors import CORSMiddleware  
 
-from .routers import workouts
+from .routers import workouts, seeding
 
 from .db.database import Base, engine
 
@@ -20,3 +20,4 @@ app.add_middleware(
 
 
 app.include_router(workouts.router)
+app.include_router(seeding.router)

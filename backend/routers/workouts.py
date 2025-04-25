@@ -15,7 +15,8 @@ router = APIRouter(
 
 
 
-@router.get("/workouts")
+@router.get("/")
 async def get_workouts(db: Session = Depends(get_db)):
-    print(db.query(Silaba).all())
-    return {"med": "dd"}
+    silaba = db.query(Silaba).all()
+    print(silaba)
+    return {"silaba": silaba}

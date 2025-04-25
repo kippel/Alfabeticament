@@ -8,4 +8,12 @@ backend $ source .venv/bin/activate
 (.venv) backend $ pip install sqlalchemy
 
 (.venv) backend $ fastapi run main.py --port 4000
+
+(.venv) backend $ pip freeze > requirements.txt
+
+```
+
+```
+$ npx create-next-app@latest frontend
+
 ```
