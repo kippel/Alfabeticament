@@ -2,8 +2,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+type Silaba = {
+  id: number;
+  silaba: string;
+};
+
 function WorkoutsPage() {
-  const [silaba, setSilaba] = useState([]);
+  const [silaba, setSilaba] = useState<Silaba[]>([]);
 
   const getUsers = async () => {
     const red = await axios.get(`http://localhost:4000/workouts`);
