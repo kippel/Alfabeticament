@@ -1,6 +1,10 @@
 Language:
-  - name: "Catala"
-  - name: "Español"
+  - flag: "Catala"
+    icon: "/flag/Flag_of_Catalonia.svg"
+    language: "cat"
+  - flag: "Espanol"
+    icon: "/flag/Flag_of_Spain_(civil).svg"
+    language: "es"
 silaba:
   - silaba: "Monosil.labs"
 silaba_un:

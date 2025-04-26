@@ -11,7 +11,7 @@ function WorkoutsPage() {
   const [silaba, setSilaba] = useState<Silaba[]>([]);
 
   const getUsers = async () => {
-    const red = await axios.get(`http://localhost:4000/workouts`);
+    const red = await axios.get(`http://localhost:4000/silaba`);
     console.log(red.data.silaba);
     setSilaba(red.data.silaba);
   };

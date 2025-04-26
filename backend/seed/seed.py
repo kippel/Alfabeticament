@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi.params import Depends
 
 from backend.security import get_db
-from backend.db.models import Silaba, SilabaUn, SilabaUser
+from backend.db.models import Silaba, SilabaUn, SilabaUser, Flag
 
 class Seeds:
     @staticmethod
@@ -35,12 +35,32 @@ class Seeds:
             
             db.delete(r)
             db.commit()
+
+    @staticmethod
+    def seed_flag(db: Session = Depends(get_db)):
+        flag_app = db.query(Flag).all()
+
+        for r in flag_app:
+            db.delete(r)
+            db.commit()
     
     @staticmethod
     def seed_silaba_bar(silaba, db: Session = Depends(get_db)):
         """
         Seed silaba
         """
+
+        for r in silaba['Language']:
+
+            flag_app = Flag(
+                flag=r['flag'],
+                icon=r['icon'],
+                language=r['language']
+            )
+            db.add(flag_app)
+            db.commit()
+
+
         for r in silaba['silaba']:
             sil = Silaba(
                 silaba=r['silaba']
