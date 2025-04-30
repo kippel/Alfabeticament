@@ -15,8 +15,9 @@ class Silaba(Base):
     id = Column(Integer, primary_key=True)
     silaba = Column(String)
     #owner_id = Column(Integer, ForeignKey('silabaun.order')) 
-    silaba_id = relationship("SilabaUn", backref="silabas")
-    #silaba_id = Column(Integer, ForeignKey('silaba_id.order'))
+    #silaba_id = relationship("SilabaUn", backref="silabas")
+
+    silaba_id = Column(String) #, ForeignKey('silaba_id.silabaun_id'))
 
 class SilabaUn(Base):
     __tablename__ = "silabaun"
@@ -24,8 +25,11 @@ class SilabaUn(Base):
     id = Column(Integer, primary_key=True)
     nom = Column(String)
     order = Column(Integer)
-    silaba_id = Column(Integer, ForeignKey('silaba.id'))
-    monousers = relationship("SilabaUser", backref="silabaun")
+
+    silabaun_id = Column(String) #, ForeignKey('silaba_id.silabaun_id'))
+
+    #silaba_id = Column(Integer, ForeignKey('silaba.id'))
+    #monousers = relationship("SilabaUser", backref="silabaun")
 
 
 class SilabaUser(Base):

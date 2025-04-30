@@ -63,7 +63,8 @@ class Seeds:
 
         for r in silaba['silaba']:
             sil = Silaba(
-                silaba=r['silaba']
+                silaba=r['silaba'],
+                silaba_id=r['silaba_id']
             )
             db.add(sil)
             db.commit()
@@ -73,7 +74,7 @@ class Seeds:
             mon = SilabaUn(
                 nom=i['name'],
                 order=i['order'],
-                silaba_id=i['silaba_id']
+                silabaun_id=i['silabaun_id']
             )
             db.add(mon)
             db.commit()

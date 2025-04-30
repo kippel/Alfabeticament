@@ -7,22 +7,23 @@ Language:
     language: "es"
 silaba:
   - silaba: "Monosil.labs"
+    silaba_id: "monosilabas"
 silaba_un:
   - name: "Monosil.labs User 1"
     order: 1
-    silaba_id: 1
+    silabaun_id: "monosilabas"
   - name: "Monosil.labs User 2"
     order: 2
-    silaba_id: 1
+    silabaun_id: "monosilabas"
   - name: "Monosil.labs User 3"
     order: 3
-    silaba_id: 1
+    silabaun_id: "monosilabas"
   - name: "Monosil.labs User 4"
     order: 4
-    silaba_id: 1
+    silabaun_id: "monosilabas"
   - name: "Monosil.labs User 5"
     order: 5
-    silaba_id: 1
+    silabaun_id: "monosilabas"
 silabs_user:
   - nom: "pa"
     owner_id: 1

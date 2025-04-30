@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 type Silaba = {
   id: number;
   silaba: string;
+  silaba_id: string;
 };
 
 function WorkoutsPage() {
@@ -24,7 +26,10 @@ function WorkoutsPage() {
   return (
     <div>
       {silaba.map((sil) => (
-        <h1 key="{sil.id}">{sil.silaba}</h1>
+        <div key="{sil.id}">
+          {sil.silaba}
+          <Link href={sil.silaba_id}>{sil.silaba_id}</Link>
+        </div>
       ))}
     </div>
   );
