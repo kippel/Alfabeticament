@@ -9,6 +9,12 @@ class Flag(Base):
     icon = Column(String)
     language = Column(String)
 
+"""
+class Simon(Base):
+    __tablename__ = "simon"
+
+"""
+
 class Silaba(Base):
     __tablename__ = "silaba"
 
@@ -16,8 +22,8 @@ class Silaba(Base):
     silaba = Column(String)
     #owner_id = Column(Integer, ForeignKey('silabaun.order')) 
     #silaba_id = relationship("SilabaUn", backref="silabas")
-
-    silaba_id = Column(String) #, ForeignKey('silaba_id.silabaun_id'))
+    #order = Column(String)
+    silaba_id = Column(Integer) #, ForeignKey('silaba_id.silabaun_id'))
 
 class SilabaUn(Base):
     __tablename__ = "silabaun"
@@ -26,7 +32,7 @@ class SilabaUn(Base):
     nom = Column(String)
     order = Column(Integer)
 
-    silabaun_id = Column(String) #, ForeignKey('silaba_id.silabaun_id'))
+    silabaun_id = Column(Integer) #, ForeignKey('silaba_id.silabaun_id'))
 
     #silaba_id = Column(Integer, ForeignKey('silaba.id'))
     #monousers = relationship("SilabaUser", backref="silabaun")

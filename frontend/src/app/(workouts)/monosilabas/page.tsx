@@ -6,7 +6,7 @@ type Silabaun = {
   id: number;
   nom: string;
   order: number;
-  silabaun_id: string;
+  silabaun_id: number;
 };
 
 function Silabaun() {

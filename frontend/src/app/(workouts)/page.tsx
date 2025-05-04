@@ -6,8 +6,12 @@ import Link from "next/link";
 type Silaba = {
   id: number;
   silaba: string;
-  silaba_id: string;
+  silaba_id: number;
 };
+
+
+
+
 
 function WorkoutsPage() {
   const [silaba, setSilaba] = useState<Silaba[]>([]);
@@ -28,7 +32,8 @@ function WorkoutsPage() {
       {silaba.map((sil) => (
         <div key="{sil.id}">
           {sil.silaba}
-          <Link href={sil.silaba_id}>{sil.silaba_id}</Link>
+
+          <Link href="/monosilabas">{sil.silaba_id}</Link>
         </div>
       ))}
     </div>
