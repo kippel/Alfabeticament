@@ -5,10 +5,18 @@ from fastapi import APIRouter, status
 from sqlalchemy.orm import Session
 from fastapi.params import Depends
 
-from backend.db.models import Silaba, Flag, SilabaUn
+from backend.db.models import Silaba, Flag, SilabaUn, Abc
 from backend.security import get_db
 
 router = APIRouter( )
+
+
+@router.get("/abc", tags=["abc"])
+async def get_abc(db: Session = Depends(get_db)):
+
+    abc = db.query(Abc).all()
+
+    return { "abc" : abc}
 
 
 

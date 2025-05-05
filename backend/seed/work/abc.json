@@ -1,0 +1,11 @@
+{
+  "abc": [
+    {
+      "abc": "Abc",
+      "href": "/abc",
+      "icon": "/abc/bricks-abc-svgrepo-com.svg",
+      "height": 150,
+      "width": 150
+    }
+  ]
+}

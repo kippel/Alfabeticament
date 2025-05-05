@@ -1,25 +1,23 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
 
-type Silaba = {
+import AbcPage from "../(workouts)/AbcPage";
+
+type Abc = {
   id: number;
-  silaba: string;
-  silaba_id: number;
+  abc: string;
+  icon: string;
+  href: string;
 };
 
-
-
-
-
 function WorkoutsPage() {
-  const [silaba, setSilaba] = useState<Silaba[]>([]);
+  const [abc, setAbc] = useState<Abc[]>([]);
 
   const getUsers = async () => {
-    const red = await axios.get(`http://localhost:4000/silaba`);
-    console.log(red.data.silaba);
-    setSilaba(red.data.silaba);
+    const red = await axios.get(`http://localhost:4000/abc`);
+    console.log(red.data.abc);
+    setAbc(red.data.abc);
   };
 
   useEffect(() => {
@@ -29,13 +27,11 @@ function WorkoutsPage() {
 
   return (
     <div>
-      {silaba.map((sil) => (
-        <div key="{sil.id}">
-          {sil.silaba}
-
-          <Link href="/monosilabas">{sil.silaba_id}</Link>
-        </div>
-      ))}
+      <div className="grid grid-cols-4 gap-4">
+        {abc.map((abc) => (
+          <AbcPage abc={abc} key={abc.id} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -2,9 +2,56 @@ from sqlalchemy.orm import Session
 from fastapi.params import Depends
 
 from backend.security import get_db
-from backend.db.models import Silaba, SilabaUn, SilabaUser, Flag
+#from backend.db.models import Silaba, SilabaUn, SilabaUser, Flag, Abc
+from backend.db.models import Flag, Abc
 
-class Seeds:
+class seed_language:
+
+    @staticmethod
+    def seed_flag_delete(db: Session = Depends(get_db)):
+        flag_app = db.query(Flag).all()
+
+        for r in flag_app:
+            db.delete(r)
+            db.commit()
+
+    @staticmethod
+    def seed_flag(language, db: Session = Depends(get_db)):
+        for r in language:
+
+            flag_app = Flag(
+                flag=r['flag'],
+                icon=r['icon'],
+                language=r['language']
+            )
+            db.add(flag_app)
+            db.commit()
+
+class seed_abc:
+    
+    @staticmethod
+    def delete(db: Session = Depends(get_db)):
+        abc = db.query(Abc).all()
+
+        for i in abc:
+            db.delete(i)
+            db.commit()
+
+    @staticmethod
+    def abc(abc, db: Session = Depends(get_db)):
+        for r in abc:
+            abc_app = Abc(
+                abc=r["abc"],
+                href=r["href"],
+                icon=r["icon"],
+                width=r['width'],
+                height=r['height']
+            )
+            db.add(abc_app)
+            db.commit()
+
+'''
+class seeds_silaba:
     @staticmethod
     def seed_silaba(db: Session = Depends(get_db)):
         """
@@ -36,30 +83,10 @@ class Seeds:
             db.delete(r)
             db.commit()
 
-    @staticmethod
-    def seed_flag(db: Session = Depends(get_db)):
-        flag_app = db.query(Flag).all()
-
-        for r in flag_app:
-            db.delete(r)
-            db.commit()
+    
     
     @staticmethod
     def seed_silaba_bar(silaba, db: Session = Depends(get_db)):
-        """
-        Seed silaba
-        """
-
-        for r in silaba['Language']:
-
-            flag_app = Flag(
-                flag=r['flag'],
-                icon=r['icon'],
-                language=r['language']
-            )
-            db.add(flag_app)
-            db.commit()
-
 
         for r in silaba['silaba']:
             sil = Silaba(
@@ -88,3 +115,4 @@ class Seeds:
             )
             db.add(mon)
             db.commit()
+'''

@@ -1,0 +1,14 @@
+{
+  "language": [
+    {
+      "flag": "Catala",
+      "icon": "/flag/Flag_of_Catalonia.svg",
+      "language": "cat"
+    },
+    {
+      "flag": "Espanol",
+      "icon": "/flag/Flag_of_Spain_(civil).svg",
+      "language": "es"
+    }
+  ]
+}

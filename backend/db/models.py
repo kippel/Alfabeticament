@@ -9,11 +9,15 @@ class Flag(Base):
     icon = Column(String)
     language = Column(String)
 
-"""
-class Simon(Base):
-    __tablename__ = "simon"
 
-"""
+class Abc(Base):
+    __tablename__ = "abc"
+    id = Column(Integer, primary_key=True)
+    abc = Column(String)
+    href = Column(String)
+    icon = Column(String)
+    width = Column(Integer)
+    height = Column(Integer)
 
 class Silaba(Base):
     __tablename__ = "silaba"
