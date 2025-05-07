@@ -14,8 +14,8 @@ function Abc() {
   const [abcItem, setAbcItem] = useState<AbcItems[]>([]);
 
   const getUsers = async () => {
-    const red = await axios.get(`http://localhost:4000/abc/item`);
-    console.log(red.data.abc_item);
+    const red = await axios.get(process.env.BASE_URL + `/abc/item`);
+    //console.log(red.data.abc_item);
     setAbcItem(red.data.abc_item);
   };
 

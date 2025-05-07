@@ -14,9 +14,11 @@ type Abc = {
 function WorkoutsPage() {
   const [abc, setAbc] = useState<Abc[]>([]);
 
+  //console.log(process.env.BASE_URL);
+
   const getUsers = async () => {
-    const red = await axios.get(`http://localhost:4000/abc`);
-    console.log(red.data.abc);
+    const red = await axios.get(process.env.BASE_URL + `/abc`);
+    //console.log(red.data.abc);
     setAbc(red.data.abc);
   };
 
