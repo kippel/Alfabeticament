@@ -5,6 +5,9 @@ import axios from "axios";
 type AbcItems = {
   id: number;
   lletra: string;
+  numbro: number;
+  voice: string;
+  vocals: string;
 };
 
 function Abc() {
@@ -30,6 +33,20 @@ function Abc() {
             className="flux max-w-sm rounded overflow-hidden shadow-lg"
           >
             {abc.lletra}
+
+            {abc.vocals}
+            {abc.voice}
+
+            <audio controls>
+              <source
+                id="audio-player"
+                name="audio-player"
+                src={abc.voice}
+                type="audio/mp3"
+              />
+              {/* Fallback content */}
+              Your browser does not support the audio element.
+            </audio>
           </div>
         ))}
       </div>
