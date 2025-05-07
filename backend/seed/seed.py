@@ -3,7 +3,11 @@ from fastapi.params import Depends
 
 from backend.security import get_db
 #from backend.db.models import Silaba, SilabaUn, SilabaUser, Flag, Abc
-from backend.db.models import Flag, Abc
+from backend.db.models import Flag, Abc, AbcItem
+from gtts import gTTS
+import hashlib
+import secrets
+import os
 
 class seed_language:
 
@@ -49,6 +53,65 @@ class seed_abc:
             )
             db.add(abc_app)
             db.commit()
+
+
+
+class seed_abc_item:
+
+    @staticmethod
+    def delete(db: Session = Depends(get_db)):
+        abc = db.query(AbcItem).all()
+
+        for i in abc:
+            db.delete(i)
+            db.commit()
+
+
+        
+        dir_path = r"../frontend/public/vocals"
+        # List all files in the directory
+        for filename in os.listdir(dir_path):
+            
+            file_path = os.path.join(dir_path, filename)
+        
+            # Check if it is a file (not a subdirectory)
+            if os.path.isfile(file_path):
+                os.remove(file_path)  # Remove the file
+
+
+
+    @staticmethod
+    def abc(abc_item, db: Session = Depends(get_db)):
+        for r in abc_item:
+
+            # todo: 
+            voice_app = seed_abc_item.mp3(r['vocals'])
+
+            abc_app = AbcItem(
+                lletra=r["lletra"],
+                numbro=r["numbro"],
+                vocals=r["vocals"],
+                voice=voice_app
+            )
+
+
+
+            db.add(abc_app)
+            db.commit()
+
+    @staticmethod
+    def mp3(vocals): 
+
+        salt = secrets.token_hex(16)
+        hash_object = hashlib.sha256(salt.encode())
+        hash_hex = hash_object.hexdigest()
+
+        tts = gTTS(text=vocals,lang='ca',slow=False)
+        tts.save(f"../frontend/public/vocals/{hash_hex}.mp3")
+        
+
+        return f"/vocals/{hash_hex}.mp3"
+        
 
 '''
 class seeds_silaba:

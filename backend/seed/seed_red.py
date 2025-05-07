@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi.params import Depends
 
 from backend.security import get_db
-from backend.seed.seed import seed_language, seed_abc
+from backend.seed.seed import seed_language, seed_abc, seed_abc_item
 import json
 
 def red_language(db: Session = Depends(get_db)):
@@ -34,3 +34,9 @@ def red_abc(db: Session = Depends(get_db)):
         config = json.load(file)
 
     seed_abc.abc(config['abc'], db)
+
+def red_abc_items(db: Session = Depends(get_db)):
+    seed_abc_item.delete(db)
+    with open("seed/work/abc_item.json", 'r') as file:
+        config = json.load(file)
+    seed_abc_item.abc(config['abc_item'], db)

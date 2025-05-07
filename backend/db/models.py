@@ -19,6 +19,14 @@ class Abc(Base):
     width = Column(Integer)
     height = Column(Integer)
 
+class AbcItem(Base):
+    __tablename__ = "abc_item"
+    id = Column(Integer, primary_key=True)
+    lletra = Column(String)
+    numbro = Column(Integer)
+    voice = Column(String)
+    vocals = Column(String)
+
 class Silaba(Base):
     __tablename__ = "silaba"
 

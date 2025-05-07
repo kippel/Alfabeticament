@@ -1,0 +1,24 @@
+{
+  "abc_item": [
+    {
+      "lletra": "A a",
+      "numbro": 1,
+      "vocals": "a"
+    },
+    {
+      "lletra": "B b",
+      "numbro": 2,
+      "vocals": "be"
+    },
+    {
+      "lletra": "C c",
+      "numbro": 3,
+      "vocals": "ce"
+    },
+    {
+      "lletra": "D d",
+      "numbro": 4,
+      "vocals": "de"
+    }
+  ]
+}
